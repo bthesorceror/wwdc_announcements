@@ -4,8 +4,8 @@
   "description": "Gets WWDC 2013 announcements",
   "main": "index.js",
   "scripts": { },
-  "repository": "",
-  "author": "",
+  "repository": "git://github.com/bthesorceror/wwdc_announcements.git",
+  "author": "Brandon Farmer",
   "license": "BSD",
   "readmeFilename": "README.md",
   "dependencies": {
