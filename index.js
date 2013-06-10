@@ -1,9 +1,10 @@
-var $         = require('jquery'),
-    request   = require('request'),
-    growl     = require('growl'),
-    url       = 'http://techcrunch.com/2013/06/10/live-blog-wwdc-2013-keynote/',
-    lastCount = 0,
-    clearSeq  = "\033[2J\033[0f";
+var $          = require('jquery'),
+    request    = require('request'),
+    growl      = require('growl'),
+    url        = 'http://techcrunch.com/2013/06/10/live-blog-wwdc-2013-keynote/',
+    lastCount  = 0,
+    lineLength = 76,
+    clearSeq   = "\033[2J\033[0f";
 
 function printLines(text, max_length) {
   var words = text.split(' '), chunks = [], length = 0;
@@ -18,13 +19,13 @@ function printLines(text, max_length) {
 
 function printEntrySeperator() {
   console.log('');
-  console.log(charLine('=', 76));
-  console.log(charLine('=', 76));
+  console.log(charLine('=', lineLength));
+  console.log(charLine('=', lineLength));
   console.log('');
 }
 
 function printSectionSeperator() {
-  console.log(charLine('-', 76));
+  console.log(charLine('-', lineLength));
 }
 
 function charLine(ch, length) {
@@ -38,9 +39,9 @@ function charLine(ch, length) {
 function printEntry(el) {
   var els = $(el).find('p');
   printSectionSeperator();
-  printLines($(els[0]).text(), 76);
+  printLines($(els[0]).text(), lineLength);
   printSectionSeperator();
-  printLines($(els[1]).text(), 76);
+  printLines($(els[1]).text(), lineLength);
   printSectionSeperator();
   printEntrySeperator();
 }
