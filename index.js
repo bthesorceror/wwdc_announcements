@@ -48,7 +48,7 @@ function printEntry(el) {
 
 function growlNotification(els) {
   if (els.length) {
-    growl('WWDC ' + els.length + ' announcements', {title: 'WWDC'});
+    growl('WWDC ' + els.length + ' announcements', {title: 'WWDC', sticky: true});
   }
 }
 
