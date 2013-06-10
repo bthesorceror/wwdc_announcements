@@ -27,10 +27,10 @@ function printSectionSeperator() {
   console.log(charLine('-', 76));
 }
 
-function charLine(char, length) {
+function charLine(ch, length) {
   line = '';
   for (var i = 0; i < length; i++) {
-    line += char; 
+    line += ch; 
   }
   return line;
 }
