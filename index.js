@@ -38,10 +38,14 @@ function charLine(ch, length) {
 
 function printEntry(el) {
   var els = $(el).find('p');
+  var title = $(els[0]).text();
+  var body = $(els[1]).text();
+  if (title.length) {
+    printSectionSeperator();
+    printLines(title, lineLength);
+  }
   printSectionSeperator();
-  printLines($(els[0]).text(), lineLength);
-  printSectionSeperator();
-  printLines($(els[1]).text(), lineLength);
+  printLines(body, lineLength);
   printSectionSeperator();
   printEntrySeperator();
 }
@@ -56,9 +60,9 @@ function getData() {
   request(url, function (err, response, body) {
     if (!err && response.statusCode == 200) {
       var $body = $(body),
-          els   = $body.find("#liveblog-entries .liveblog-entry-text").slice(lastCount);
-      els.each(function(index){
-        printEntry(els[index]);
+          els   = $body.find("#liveblog-entries .liveblog-entry-text").toArray().reverse().slice(lastCount);
+      els.forEach(function(el){
+        printEntry(el);
       });
       growlNotification(els);
       lastCount += els.length;
