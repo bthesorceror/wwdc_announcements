@@ -40,10 +40,8 @@ function printEntry(el) {
   var els = $(el).find('p');
   var title = $(els[0]).text();
   var body = $(els[1]).text();
-  if (title.length) {
-    printSectionSeperator();
-    printLines(title, lineLength);
-  }
+  printSectionSeperator();
+  printLines(title, lineLength);
   printSectionSeperator();
   printLines(body, lineLength);
   printSectionSeperator();
